@@ -91,3 +91,34 @@ export interface EmployeeRecord {
   hireDate: string;
   documentCount: number;
 }
+
+export interface AiSettings {
+  provider: 'groq' | 'openai' | 'anthropic' | 'offline';
+  model: string;
+  apiKey: string;
+}
+
+export interface SubRecommendation {
+  substituteId: string;
+  substituteName: string;
+  phoneNumber: string;
+  certifications: string;
+  matchScore: number;
+  matchTier: string;
+  reasoning: string;
+  keyFactors: string[];
+  remainingWeeklyHours: number;
+  rating: number;
+}
+
+export interface AiDispatchResponse {
+  absenceId: string;
+  subject: string;
+  schoolName: string;
+  providerUsed: string;
+  modelUsed: string;
+  latencyMs: number;
+  recommendations: SubRecommendation[];
+  executiveSummary: string;
+}
+

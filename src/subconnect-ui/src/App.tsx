@@ -1,16 +1,44 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Absence, DistrictMetrics, School, Teacher, Substitute } from './types';
+import { Absence, DistrictMetrics, School, Teacher, Substitute, AiSettings } from './types';
 import { api, createSignalRConnection } from './services/api';
 import { Navbar } from './components/Navbar';
 import { AdminPortal } from './components/AdminPortal';
 import { TeacherPortal } from './components/TeacherPortal';
 import { SubstitutePortal } from './components/SubstitutePortal';
+import { AiSettingsModal } from './components/AiSettingsModal';
+
+const DEFAULT_AI_SETTINGS: AiSettings = {
+  provider: 'groq',
+  model: 'llama-3.3-70b-versatile',
+  apiKey: '',
+};
 
 export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('admin');
   const [signalRConnected, setSignalRConnected] = useState<boolean>(false);
 
   const [apiError, setApiError] = useState<string | null>(null);
+
+  // AI Copilot Settings
+  const [isAiSettingsOpen, setIsAiSettingsOpen] = useState<boolean>(false);
+  const [aiSettings, setAiSettings] = useState<AiSettings>(() => {
+    try {
+      const saved = localStorage.getItem('subconnect_ai_settings');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // fallback
+    }
+    return DEFAULT_AI_SETTINGS;
+  });
+
+  const handleSaveAiSettings = (newSettings: AiSettings) => {
+    setAiSettings(newSettings);
+    try {
+      localStorage.setItem('subconnect_ai_settings', JSON.stringify(newSettings));
+    } catch {
+      // ignore
+    }
+  };
 
   // Core Data
   const [absences, setAbsences] = useState<Absence[]>([]);
@@ -87,6 +115,7 @@ export const App: React.FC = () => {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         signalRConnected={signalRConnected}
+        onOpenAiSettings={() => setIsAiSettingsOpen(true)}
       />
 
       {apiError && (
@@ -107,6 +136,8 @@ export const App: React.FC = () => {
           <AdminPortal
             absences={absences}
             substitutes={substitutes}
+            aiSettings={aiSettings}
+            onOpenAiSettings={() => setIsAiSettingsOpen(true)}
             onRefresh={loadData}
           />
         )}
@@ -127,6 +158,14 @@ export const App: React.FC = () => {
           />
         )}
       </main>
+
+      {/* AI Settings Modal */}
+      <AiSettingsModal
+        isOpen={isAiSettingsOpen}
+        onClose={() => setIsAiSettingsOpen(false)}
+        settings={aiSettings}
+        onSave={handleSaveAiSettings}
+      />
 
       {/* Minimal Footer */}
       <footer className="footer">

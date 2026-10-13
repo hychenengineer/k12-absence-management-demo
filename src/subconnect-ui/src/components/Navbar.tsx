@@ -1,21 +1,23 @@
-import React from 'react';
 import { 
   Building2, 
   GraduationCap, 
   Briefcase, 
-  Radio
+  Radio,
+  Sparkles
 } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   signalRConnected: boolean;
+  onOpenAiSettings?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
   signalRConnected,
+  onOpenAiSettings,
 }) => {
   const tabs = [
     { 
@@ -70,7 +72,31 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        <div className="nav-right">
+        <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          {onOpenAiSettings && (
+            <button 
+              onClick={onOpenAiSettings}
+              className="ai-settings-nav-btn"
+              title="Configure AI Model & Provider (Groq, OpenAI, Anthropic)"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                background: '#ffffff',
+                border: '1px solid #cbd5e1',
+                borderRadius: '20px',
+                padding: '5px 12px',
+                fontSize: '12px',
+                fontWeight: 600,
+                color: '#1e293b',
+                cursor: 'pointer',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.05)'
+              }}
+            >
+              <Sparkles size={13} style={{ color: '#d97706' }} />
+              <span>AI Settings</span>
+            </button>
+          )}
           <div className={`status-pill ${signalRConnected ? 'live' : 'fallback'}`}>
             <Radio size={13} className={signalRConnected ? 'pulse' : ''} />
             <span>{signalRConnected ? 'Azure SignalR Live' : 'Local Connected'}</span>

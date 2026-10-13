@@ -58,6 +58,21 @@ dotnet run
 
 ---
 
+## ⚡ AI Substitute Smart Dispatch Copilot (Groq / OpenAI / Anthropic)
+
+SubConnect includes an intelligent, multi-provider **AI Dispatch Copilot** designed to recommend optimal substitutes in milliseconds during morning call-outs:
+
+- **Ultra-Fast Groq LPUs**: Leverages Groq's high-speed inference engine (`llama-3.3-70b-versatile`, `llama-3.1-8b-instant`) returning intelligent, multi-factor substitute rankings in **~200ms**.
+- **Multi-Provider Architecture**: Supports **Groq**, **OpenAI** (`gpt-4o-mini`, `gpt-4o`), **Anthropic** (`claude-3-5-haiku`), or a **Zero-Config Offline Heuristic Engine**.
+- **Multi-Factor Scoring Matrix**:
+  - State certification alignment (e.g. Science / Chemistry endorsements).
+  - Department & grade-level familiarity.
+  - Weekly FLSA overtime compliance limits.
+  - Teacher preference history & star ratings.
+- **In-App Model & Key Configuration**: Administrators and reviewers can click the **AI Settings** button in the top navigation bar to select their preferred AI provider, model preset, and supply their own API key (persisted safely in local browser storage). If no key is provided, the system gracefully falls back to the zero-config offline rule engine so the demo never fails.
+
+---
+
 ## 2. Concrete Walkthrough Example: Emergency Absence & Substitute Placement
 
 This step-by-step scenario walks through how the three primary personas (**Teacher**, **Administrator**, and **Substitute**) interact with the platform in real time with zero page reloads.

@@ -18,8 +18,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
 
 // 2. Application Domain Services
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<MatchingEngine>();
 builder.Services.AddScoped<NotificationService>();
+builder.Services.AddScoped<AiDispatchService>();
 
 // 3. Real-Time SignalR Service
 builder.Services.AddSignalR();

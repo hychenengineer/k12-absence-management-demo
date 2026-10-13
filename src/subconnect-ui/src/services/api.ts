@@ -1,5 +1,5 @@
 import * as signalR from '@microsoft/signalr';
-import { Absence, CreateAbsenceDto, DistrictMetrics, TimeEntry, EmployeeRecord, School, Teacher, Substitute } from '../types';
+import { Absence, CreateAbsenceDto, DistrictMetrics, TimeEntry, EmployeeRecord, School, Teacher, Substitute, AiSettings, AiDispatchResponse } from '../types';
 
 const API_BASE = '/api';
 
@@ -122,6 +122,24 @@ export const api = {
   async triggerBurstSimulation(): Promise<{ status: string; notificationsDispatched: number; batchCount: number; averageThroughputMsgPerSec: number; simulatedDurationMs: number }> {
     const res = await fetch('http://localhost:7071/api/dispatch-burst');
     if (!res.ok) throw new Error('Azure Function Worker is offline at http://localhost:7071');
+    return await res.json();
+  },
+
+  async getAiRecommendations(absenceId: string, settings?: AiSettings): Promise<AiDispatchResponse> {
+    const res = await fetch(`${API_BASE}/ai/recommend-substitutes`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        absenceId,
+        provider: settings?.provider || 'groq',
+        model: settings?.model || undefined,
+        apiKey: settings?.apiKey || undefined,
+      }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ message: res.statusText }));
+      throw new Error(err.message || `Failed to fetch AI recommendations: ${res.statusText}`);
+    }
     return await res.json();
   }
 };

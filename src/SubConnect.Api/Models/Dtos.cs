@@ -51,3 +51,35 @@ public record DistrictMetricsDto(
     double FillRatePercentage,
     int AverageFillTimeMinutes
 );
+
+public record AiRecommendationRequest(
+    string AbsenceId,
+    string? Provider = "groq",
+    string? Model = null,
+    string? ApiKey = null
+);
+
+public record SubRecommendationDto(
+    string SubstituteId,
+    string SubstituteName,
+    string PhoneNumber,
+    string Certifications,
+    int MatchScore,
+    string MatchTier,
+    string Reasoning,
+    List<string> KeyFactors,
+    int RemainingWeeklyHours,
+    double Rating
+);
+
+public record AiRecommendationResponse(
+    string AbsenceId,
+    string Subject,
+    string SchoolName,
+    string ProviderUsed,
+    string ModelUsed,
+    long LatencyMs,
+    List<SubRecommendationDto> Recommendations,
+    string ExecutiveSummary
+);
+
