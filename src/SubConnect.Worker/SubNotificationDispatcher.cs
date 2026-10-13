@@ -4,7 +4,7 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 
-namespace RedRover.Worker;
+namespace SubConnect.Worker;
 
 /// <summary>
 /// SubNotificationDispatcher: Serverless Azure Function handling the 6:00 AM morning burst.

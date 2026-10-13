@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 
-namespace RedRover.Api.Hubs;
+namespace SubConnect.Api.Hubs;
 
 public class AbsenceHub : Hub
 {

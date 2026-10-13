@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using RedRover.Api.Data;
-using RedRover.Api.Models;
+using SubConnect.Api.Data;
+using SubConnect.Api.Models;
 
-namespace RedRover.Api.Services;
+namespace SubConnect.Api.Services;
 
 public class MatchingEngine
 {

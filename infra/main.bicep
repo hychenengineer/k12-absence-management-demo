@@ -1,24 +1,24 @@
 @description('Environment name (e.g. dev, prod)')
 param environment string = 'prod'
 
-@description('Primary Azure region for all Red Rover resources')
+@description('Primary Azure region for all SubConnect resources')
 param location string = resourceGroup().location
 
 @description('Administrator login name for Azure SQL Server')
-param sqlAdminLogin string = 'redroveradmin'
+param sqlAdminLogin string = 'subconnectadmin'
 
 @description('Administrator password for Azure SQL Server')
 @secure()
 param sqlAdminPassword string
 
 var suffix = uniqueString(resourceGroup().id)
-var apiName = 'app-redrover-api-${suffix}'
+var apiName = 'app-subconnect-api-${suffix}'
 var funcName = 'func-sub-dispatcher-${suffix}'
-var signalRName = 'sig-redrover-${suffix}'
-var serviceBusName = 'sb-redrover-${suffix}'
-var sqlServerName = 'sql-redrover-${suffix}'
-var sqlDbName = 'redrover-k12'
-var storageName = 'stredrover${take(suffix, 12)}'
+var signalRName = 'sig-subconnect-${suffix}'
+var serviceBusName = 'sb-subconnect-${suffix}'
+var sqlServerName = 'sql-subconnect-${suffix}'
+var sqlDbName = 'subconnect-k12'
+var storageName = 'stsubconn${take(suffix, 12)}'
 
 // 1. Storage Account (Used by Azure Functions & Personnel Document Vault)
 resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
@@ -115,7 +115,7 @@ resource sqlDatabase 'Microsoft.Sql/servers/databases@2022-11-01-preview' = {
 
 // 5. Azure App Service Plan for Core REST API (Always-On dedicated instances to prevent cold starts)
 resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
-  name: 'plan-redrover-api'
+  name: 'plan-subconnect-api'
   location: location
   sku: {
     name: 'P1v3'
@@ -153,7 +153,7 @@ resource apiApp 'Microsoft.Web/sites@2022-09-01' = {
 
 // 7. Consumption Plan for SubNotificationDispatcher (Serverless Burst Worker)
 resource funcConsumptionPlan 'Microsoft.Web/serverfarms@2022-09-01' = {
-  name: 'plan-redrover-burst'
+  name: 'plan-subconnect-burst'
   location: location
   sku: {
     name: 'Y1'

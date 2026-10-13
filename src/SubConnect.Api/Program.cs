@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RedRover.Api.Data;
-using RedRover.Api.Hubs;
-using RedRover.Api.Services;
+using SubConnect.Api.Data;
+using SubConnect.Api.Hubs;
+using SubConnect.Api.Services;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 {
@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 builder.WebHost.UseUrls("http://localhost:5000");
 
 // 1. Database Context (SQLite for local zero-config, switchable to Azure SQL via connection string)
-var dbPath = Path.Combine(AppContext.BaseDirectory, "redrover.db");
+var dbPath = Path.Combine(AppContext.BaseDirectory, "subconnect.db");
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? $"Data Source={dbPath}";
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
@@ -41,7 +41,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "Red Rover K-12 HR & Absence Management API", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "SubConnect K-12 HR & Absence Management API", Version = "v1" });
 });
 
 var app = builder.Build();

@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using RedRover.Api.Data;
-using RedRover.Api.Hubs;
-using RedRover.Api.Models;
-using RedRover.Api.Services;
+using SubConnect.Api.Data;
+using SubConnect.Api.Hubs;
+using SubConnect.Api.Models;
+using SubConnect.Api.Services;
 
-namespace RedRover.Api.Controllers;
+namespace SubConnect.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

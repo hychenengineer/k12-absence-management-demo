@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RedRover.Api.Models;
+using SubConnect.Api.Models;
 
-namespace RedRover.Api.Data;
+namespace SubConnect.Api.Data;
 
 public class AppDbContext : DbContext
 {

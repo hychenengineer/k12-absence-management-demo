@@ -1,4 +1,4 @@
-namespace RedRover.Api.Models;
+namespace SubConnect.Api.Models;
 
 public record CreateAbsenceDto(
     string? SchoolId,

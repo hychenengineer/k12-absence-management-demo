@@ -14,7 +14,7 @@ An enterprise reference implementation of a modern K-12 teacher absence manageme
 
 1. **[Download Demo-win-x64.zip (GitHub Release)](https://github.com/hychenengineer/k12-absence-management-demo/releases)**
 2. Extract the ZIP archive anywhere on a Windows machine.
-3. Double-click **`RedRover.Demo.exe`** (or the launcher).
+3. Double-click **`SubConnect.Demo.exe`** (or the launcher).
 4. The application initializes SQLite, seeds district data, and **automatically opens your browser to `http://localhost:5000`** with the full React 18 UI, REST API, and SignalR live!
 
 ---
@@ -29,19 +29,19 @@ An enterprise reference implementation of a modern K-12 teacher absence manageme
 Open a terminal and start the .NET Web API:
 
 ```bash
-cd src/RedRover.Api
+cd src/SubConnect.Api
 dotnet run
 ```
 
 - **Application & API URL**: `http://localhost:5000` *(serves both embedded React UI and REST API)*
 - **Interactive Swagger Docs**: `http://localhost:5000/swagger`
-- **Database**: An SQLite database (`redrover.db`) is automatically initialized and seeded with schools, teachers, substitutes, and baseline absence records on startup.
+- **Database**: An SQLite database (`subconnect.db`) is automatically initialized and seeded with schools, teachers, substitutes, and baseline absence records on startup.
 
 #### Step 2: Start the Frontend for Active Development (Optional)
 If modifying React source code with Vite Hot Module Reloading:
 
 ```bash
-cd src/redrover-ui
+cd src/subconnect-ui
 npm install
 npm run dev
 ```
@@ -52,7 +52,7 @@ npm run dev
 To run the Azure Functions SMS burst dispatcher:
 
 ```bash
-cd src/RedRover.Worker
+cd src/SubConnect.Worker
 dotnet run
 ```
 

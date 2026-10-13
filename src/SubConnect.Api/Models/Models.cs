@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace RedRover.Api.Models;
+namespace SubConnect.Api.Models;
 
 public class School
 {
