@@ -64,6 +64,10 @@ SubConnect includes an intelligent, multi-provider **AI Dispatch Copilot** desig
 
 - **Ultra-Fast Groq LPUs**: Leverages Groq's high-speed inference engine (`llama-3.3-70b-versatile`, `llama-3.1-8b-instant`) returning intelligent, multi-factor substitute rankings in **~200ms**.
 - **Multi-Provider Architecture**: Supports **Groq**, **OpenAI** (`gpt-4o-mini`, `gpt-4o`), **Anthropic** (`claude-3-5-haiku`), or a **Zero-Config Offline Heuristic Engine**.
+- **Real-Time Visual Execution Feedback**:
+  - 🟢 **Live AI Active Status Callout**: When a valid key is provided, the UI verifies live LLM generation with a green status banner (e.g. `🚀 Live AI Active: Live API call succeeded with GROQ (llama-3.3-70b-versatile) in 218ms`).
+  - 🟡 **Deterministic Fallback Notice**: If offline or no key is entered, explicitly displays the fallback notice so users always know whether live LLM generation or heuristic scoring was used.
+  - **Live Navbar Status Pill**: Indicates configured provider and key validity (e.g. `GROQ ✓` vs `GROQ (No Key)`).
 - **Multi-Factor Scoring Matrix**:
   - State certification alignment (e.g. Science / Chemistry endorsements).
   - Department & grade-level familiarity.
@@ -80,22 +84,24 @@ This step-by-step scenario walks through how the three primary personas (**Teach
 ### Scenario: High School Chemistry Teacher Calls Out Sick
 
 #### Step 1: Teacher Creates the Absence
-1. Open `http://localhost:5173` in your browser.
+1. Open `http://localhost:5000` (or `http://localhost:5173` in development) in your browser.
 2. Click the **Teacher** tab in the top navigation bar.
 3. In the **Teacher Persona** dropdown, select **Sarah Johnson (Lincoln High School — Science, Room 204)**.
 4. Select the date (e.g., tomorrow), duration (**Full Day**), reason (**Illness / Medical**), and enter notes: `"Lab experiment safety sheets are printed on my desk. Period 4 has Quiz 3."`
 5. Click **Create Absence**.
    - *Behind the Scenes*: The .NET API records the absence with status `Open`, triggers the qualification matching engine, and broadcasts an `AbsenceCreated` event across SignalR.
 
-#### Step 2: Administrator Assigns the Shift
+#### Step 2: Administrator Dispatches via AI Smart Dispatch Copilot
 1. Switch to the **School Admin** tab (or open it side-by-side in a second browser window).
 2. Look at the **Absence Board**:
    - The new absence for **Sarah Johnson** appears immediately in the **Open / Unfilled** list via SignalR with zero page refreshing.
-   - Note the **"Substitutes cannot claim directly"** badge: unassigned absences require admin dispatching.
-3. Click the **Assign Sub** button on Sarah Johnson's card.
-4. In the assignment modal, select qualified substitute **Alex Martinez** (certified in Science/Chemistry).
-5. Click **Confirm Assignment**.
-   - *Behind the Scenes*: The backend transitions the absence status to `Offered`, assigns `Alex Martinez`, and pushes an `AbsenceUpdated` SignalR broadcast.
+3. Click the **ASSIGN** button on Sarah Johnson's card.
+4. The **AI Substitute Smart Dispatch Copilot** opens:
+   - Evaluates all available substitutes against the teacher's subject (`10th Grade Chemistry`), school location, and weekly hours.
+   - Highlights the top recommendation (e.g. **Alex Martinez • 96% Match • BEST MATCH**) with certification verification chips and natural-language rationale.
+   - Displays real-time engine execution telemetry (e.g., `⚡ GROQ • 218ms` or `⚡ Built-In Simulator`).
+5. Click **⚡ Auto-Assign Recommended Sub** (or click **ASSIGN** next to any sub).
+   - *Behind the Scenes*: The backend transitions the absence status to `Offered`, assigns the selected substitute, and pushes an `AbsenceUpdated` SignalR broadcast.
 
 #### Step 3: Substitute Reviews and Accepts the Offer
 1. Switch to the **Substitute** tab.
