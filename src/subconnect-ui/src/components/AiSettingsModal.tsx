@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Sparkles, Key, Cpu, Zap, Eye, EyeOff, Check, ShieldCheck } from 'lucide-react';
 import { AiSettings } from '../types';
 
@@ -20,6 +20,15 @@ export const AiSettingsModal: React.FC<AiSettingsModalProps> = ({
   const [apiKey, setApiKey] = useState<string>(settings.apiKey);
   const [showKey, setShowKey] = useState<boolean>(false);
   const [savedSuccess, setSavedSuccess] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setProvider(settings.provider);
+      setModel(settings.model);
+      setApiKey(settings.apiKey);
+      setSavedSuccess(false);
+    }
+  }, [isOpen, settings]);
 
   if (!isOpen) return null;
 
@@ -51,11 +60,35 @@ export const AiSettingsModal: React.FC<AiSettingsModalProps> = ({
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose} style={{ zIndex: 1100 }}>
+    <div 
+      className="rr-modal-overlay" 
+      onClick={onClose} 
+      style={{ 
+        position: 'fixed', 
+        top: 0, 
+        left: 0, 
+        right: 0, 
+        bottom: 0, 
+        backgroundColor: 'rgba(15, 23, 42, 0.7)', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        zIndex: 99999, 
+        backdropFilter: 'blur(3px)' 
+      }}
+    >
       <div 
-        className="modal-card" 
+        className="rr-modal-window" 
         onClick={e => e.stopPropagation()} 
-        style={{ maxWidth: '520px', width: '100%', borderRadius: '12px', background: '#ffffff', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)' }}
+        style={{ 
+          maxWidth: '540px', 
+          width: '92%', 
+          borderRadius: '12px', 
+          background: '#ffffff', 
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.35)', 
+          overflow: 'hidden', 
+          animation: 'fadeIn 0.15s ease-out' 
+        }}
       >
         {/* Header */}
         <div style={{ padding: '20px 24px', borderBottom: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
