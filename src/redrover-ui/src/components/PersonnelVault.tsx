@@ -36,8 +36,7 @@ export const PersonnelVault: React.FC<PersonnelVaultProps> = ({ onOpenVideo }) =
         <div>
           <h2>Personnel Records & Credential Compliance Vault</h2>
           <p className="subtitle">
-            Modeled after Red Rover's <strong>web_optimized.mp4</strong> Records video.
-            Automated tracking for state educator licenses, FBI/BCI criminal background clearances, and digital HR onboarding vaults.
+            Automated compliance tracking for state educator licenses, FBI/BCI criminal background clearances, and digital HR onboarding vaults.
           </p>
         </div>
         <button className="btn-secondary flex-items-center gap-2" onClick={() => onOpenVideo('records')}>

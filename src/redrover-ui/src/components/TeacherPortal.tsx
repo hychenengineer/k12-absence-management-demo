@@ -137,7 +137,7 @@ export const TeacherPortal: React.FC<TeacherPortalProps> = ({
       {/* 1. Global Announcement Banner */}
       <div className="rr-top-banner rr-banner-red">
         <span className="banner-label">MESSAGE from Mishoreline Area Schools:</span>
-        <span className="banner-text">Please Add Classroom Info in Red Rover</span>
+        <span className="banner-text">Please Confirm Lesson Plans & Classroom Notes for Substitute Coverage</span>
       </div>
 
       <div className="rr-portal-body">
@@ -149,7 +149,7 @@ export const TeacherPortal: React.FC<TeacherPortalProps> = ({
                 <circle cx="20" cy="11" r="5" fill="#FF5A43" />
                 <path d="M12 24C12 20 16 18 20 18C24 18 28 20 28 24C28 27 26 29 23 29C20 29 20 27 20 25C20 27 18 29 15 29C13 29 12 27 12 24Z" stroke="#FF5A43" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span className="rr-logo-text">Red Rover</span>
+              <span className="rr-logo-text">SubConnect</span>
             </div>
             <button className="rr-sidebar-collapse">
               <ChevronLeft size={16} />

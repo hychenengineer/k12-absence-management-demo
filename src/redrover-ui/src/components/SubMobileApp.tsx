@@ -71,13 +71,12 @@ export const SubMobileApp: React.FC<SubMobileAppProps> = ({
         <div>
           <h2>Substitute Mobile Experience (PWA Simulation)</h2>
           <p className="subtitle">
-            Modeled after Red Rover's <strong>Substitute Basic Training</strong>.
-            Guest educators receive instant shift alerts on mobile, inspect lesson plans, and claim jobs in 1-tap.
+            Guest educators receive instant shift alerts on mobile, inspect lesson plans, and accept assigned jobs in 1-tap.
           </p>
         </div>
         <button className="btn-secondary flex-items-center gap-2" onClick={() => onOpenVideo('substitute')}>
           <ExternalLink size={15} />
-          <span>Watch Substitute Training Video</span>
+          <span>Watch Substitute Workflow Video</span>
         </button>
       </div>
 
@@ -91,7 +90,7 @@ export const SubMobileApp: React.FC<SubMobileAppProps> = ({
             <div className="mobile-app-header">
               <div className="flex-between">
                 <div>
-                  <div className="mobile-title">Red Rover Mobile</div>
+                  <div className="mobile-title">District Sub Mobile</div>
                   <div className="mobile-sub-name">{activeSub.fullName}</div>
                 </div>
                 <span className="badge badge-success text-xs">Available Today</span>
@@ -218,7 +217,7 @@ export const SubMobileApp: React.FC<SubMobileAppProps> = ({
             <h4>Concurrency & Double-Booking Protection</h4>
             <p className="text-sm text-muted">
               In high-demand districts, multiple substitutes receive the 6:00 AM push notification simultaneously.
-              Red Rover uses <strong>Optimistic Concurrency Control</strong> with database row version tokens:
+              The platform uses <strong>Optimistic Concurrency Control</strong> with database row version tokens:
             </p>
             <ul className="info-list text-sm">
               <li>First sub to click triggers an atomic commit and version rotation.</li>

@@ -101,13 +101,13 @@ export const AdminBoard: React.FC<AdminBoardProps> = ({
         <div>
           <h2>Daily Absence & Substitute Command Center</h2>
           <p className="subtitle">
-            Live district-wide operational view modeled after Red Rover's <strong>Admin Basic Training</strong>.
+            Live district-wide operational view for central administrators and school principals.
             Real-time SignalR WebSocket updates reflect teacher submissions and substitute claims with zero polling.
           </p>
         </div>
         <button className="btn-secondary flex-items-center gap-2" onClick={() => onOpenVideo('admin')}>
           <ExternalLink size={15} />
-          <span>Watch Official Admin Walkthrough</span>
+          <span>Watch Workflow Walkthrough</span>
         </button>
       </div>
 
@@ -144,7 +144,7 @@ export const AdminBoard: React.FC<AdminBoardProps> = ({
               style={{ width: `${Math.min(metrics.fillRatePercentage, 100)}%` }}
             ></div>
           </div>
-          <div className="metric-sub text-muted">Red Rover Target: 85.0%+</div>
+          <div className="metric-sub text-muted">District Target: 85.0%+</div>
         </div>
       </div>
 

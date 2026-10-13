@@ -1,6 +1,8 @@
-# Red Rover K-12 Absence Management System Demo
+# SubConnect: K-12 Absence Management & Substitute Placement Engine
 
-An enterprise reference implementation of a K-12 substitute placement and absence management platform, built with **.NET 10 / C# Web API**, **React 18 TypeScript**, and **Azure SignalR real-time WebSockets**.
+An enterprise reference implementation of a modern K-12 teacher absence management and automated substitute placement platform, built with **.NET 10 / C# Web API**, **React 18 TypeScript**, and **Azure SignalR real-time WebSockets**.
+
+> **Architecture Overview:** Engineered to solve the high-concurrency 6:00 AM district call-out rush with zero-polling WebSocket broadcasts, multi-persona qualification matching (Teacher, School Administrator, Substitute), and asynchronous notification worker dispatchers.
 
 ---
 
@@ -10,9 +12,9 @@ An enterprise reference implementation of a K-12 substitute placement and absenc
 
 **No Node.js, npm, or .NET SDK installation required!**
 
-1. **[Download RedRover-Demo-win-x64.zip (GitHub Release v1.0.0)](https://github.com/hychenengineer/red-rover-demo/releases/download/v1.0.0/RedRover-Demo-win-x64.zip)**
+1. **[Download Demo-win-x64.zip (GitHub Release)](https://github.com/hychenengineer/k12-absence-management-demo/releases)**
 2. Extract the ZIP archive anywhere on a Windows machine.
-3. Double-click **`RedRover.Demo.exe`**.
+3. Double-click **`RedRover.Demo.exe`** (or the launcher).
 4. The application initializes SQLite, seeds district data, and **automatically opens your browser to `http://localhost:5000`** with the full React 18 UI, REST API, and SignalR live!
 
 ---

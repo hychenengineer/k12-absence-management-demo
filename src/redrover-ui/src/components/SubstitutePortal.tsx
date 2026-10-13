@@ -139,7 +139,7 @@ export const SubstitutePortal: React.FC<SubstitutePortalProps> = ({
                 <circle cx="20" cy="11" r="5" fill="#FF5A43" />
                 <path d="M12 24C12 20 16 18 20 18C24 18 28 20 28 24C28 27 26 29 23 29C20 29 20 27 20 25C20 27 18 29 15 29C13 29 12 27 12 24Z" stroke="#FF5A43" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span className="rr-logo-text">Red Rover</span>
+              <span className="rr-logo-text">SubConnect</span>
             </div>
             <button className="rr-sidebar-collapse">
               <ChevronLeft size={16} />
@@ -291,7 +291,7 @@ export const SubstitutePortal: React.FC<SubstitutePortalProps> = ({
                   <Clock size={24} className="text-blue-500 inline mr-2" />
                   <strong>No shifts currently waiting for your confirmation.</strong>
                   <div className="text-xs text-muted mt-1">
-                    Under Red Rover dispatch rules, substitutes wait for a School Administrator to assign a shift from the Live Board before accepting or rejecting.
+                    Under district dispatch rules, substitutes wait for a School Administrator to assign a shift from the Live Board before accepting or rejecting.
                   </div>
                 </div>
               ) : (

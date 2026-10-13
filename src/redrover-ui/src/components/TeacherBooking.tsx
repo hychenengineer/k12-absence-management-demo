@@ -93,13 +93,12 @@ export const TeacherBooking: React.FC<TeacherBookingProps> = ({
         <div>
           <h2>Teacher Absence Registration Portal</h2>
           <p className="subtitle">
-            Modeled directly after Red Rover's <strong>2024 Employee Basic Training</strong>.
-            Educators log planned or emergency absences, attach lesson plan instructions, and trigger automated substitute dispatch.
+            Educators log planned or emergency absences, attach lesson plan instructions, and trigger automated substitute dispatch in real time.
           </p>
         </div>
         <button className="btn-secondary flex-items-center gap-2" onClick={() => onOpenVideo('teacher')}>
           <ExternalLink size={15} />
-          <span>Watch Employee Training Video</span>
+          <span>Watch Employee Workflow Video</span>
         </button>
       </div>
 
@@ -261,7 +260,7 @@ export const TeacherBooking: React.FC<TeacherBookingProps> = ({
 
         <div className="booking-info-sidebar">
           <div className="info-card">
-            <h4>How Red Rover Dispatch Works</h4>
+            <h4>How Automated Substitute Dispatch Works</h4>
             <ol className="info-list">
               <li>
                 <strong>Absence Ingestion:</strong> Teacher submits request into Core ASP.NET Core API.

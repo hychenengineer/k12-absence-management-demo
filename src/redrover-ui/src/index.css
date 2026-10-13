@@ -1,13 +1,13 @@
 /* ==========================================================================
-   Red Rover K-12 HR & Absence Management Platform - Styling
-   Exact Mirror of Official Training Keyframes & Modern Design System
+   SubConnect K-12 HR & Absence Management Platform - Styling
+   Modern K-12 District Design System
    ========================================================================== */
 
 :root {
-  --primary: #FF5A43;             /* Red Rover Signature Coral / Red */
+  --primary: #FF5A43;             /* Signature Coral / Accent */
   --primary-hover: #e04832;
-  --navy-dark: #0A0E2A;           /* Red Rover Dark Navy Sidebar */
-  --navy-mid: #13193A;            /* Red Rover Navy Header / Button */
+  --navy-dark: #0A0E2A;           /* Dark Navy Sidebar */
+  --navy-mid: #13193A;            /* Navy Header / Button */
   --navy-light: #1e264d;
   --bg-main: #f8fafc;
   --bg-card: #ffffff;
@@ -224,7 +224,7 @@ body {
 }
 
 /* ==========================================================================
-   AUTHENTIC RED ROVER PORTAL LAYOUT
+   K-12 PORTAL LAYOUT
    ========================================================================== */
 .rr-portal-container {
   display: flex;

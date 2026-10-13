@@ -85,7 +85,6 @@ export const TimeTrackingKiosk: React.FC<TimeTrackingKioskProps> = ({ onOpenVide
         <div>
           <h2>K-12 Time & Attendance / Extra Duty Stipends</h2>
           <p className="subtitle">
-            Modeled directly after Red Rover's <strong>timeTracking.mp4</strong> training video.
             Hardware PIN clock-ins for non-exempt hourly employees, plus automated prep-period coverage stipends for certified teachers.
           </p>
         </div>

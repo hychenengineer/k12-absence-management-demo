@@ -8,12 +8,12 @@ export interface VideoInfo {
   description: string;
 }
 
-export const RED_ROVER_VIDEOS: Record<string, VideoInfo> = {
+export const K12_WORKFLOW_VIDEOS: Record<string, VideoInfo> = {
   admin: {
     title: 'Admin Basic Training Walkthrough',
     category: 'Admin Live Absence Management',
     url: 'https://7368913.fs1.hubspotusercontent-na1.net/hubfs/7368913/Admin%20Basic%20Training.mp4',
-    description: 'Official Red Rover administration workflow: Daily absence tracking, fill-rate management, and manual override assignment.'
+    description: 'Central administration workflow: Daily absence tracking, fill-rate management, and manual override assignment.'
   },
   teacher: {
     title: '2024 Employee Basic Training',
@@ -47,9 +47,9 @@ interface VideoModalProps {
 }
 
 export const VideoModal: React.FC<VideoModalProps> = ({ videoKey, onClose }) => {
-  if (!videoKey || !RED_ROVER_VIDEOS[videoKey]) return null;
+  if (!videoKey || !K12_WORKFLOW_VIDEOS[videoKey]) return null;
 
-  const video = RED_ROVER_VIDEOS[videoKey];
+  const video = K12_WORKFLOW_VIDEOS[videoKey];
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -74,7 +74,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ videoKey, onClose }) => 
         <div className="video-meta">
           <p className="text-muted">{video.description}</p>
           <div className="flex-between">
-            <span className="text-xs text-muted">Source: Official Red Rover Training Hub</span>
+            <span className="text-xs text-muted">Source: K-12 Industry Standard Reference Stream</span>
             <a href={video.url} target="_blank" rel="noreferrer" className="link-ext">
               Open MP4 Direct Stream <ExternalLink size={14} />
             </a>

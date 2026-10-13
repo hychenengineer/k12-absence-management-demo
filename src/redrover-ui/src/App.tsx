@@ -44,7 +44,7 @@ export const App: React.FC = () => {
       setSubstitutes(sub);
     } catch (err) {
       console.error('Error loading data from backend API', err);
-      setApiError('Unable to connect to .NET API backend at http://localhost:5000. Please ensure RedRover.Api is running.');
+      setApiError('Unable to connect to .NET API backend at http://localhost:5000. Please ensure the .NET Web API is running.');
     }
   }, []);
 
@@ -101,7 +101,7 @@ export const App: React.FC = () => {
         </div>
       )}
 
-      {/* Main 100% Pixel-Mirrored Red Rover Portals */}
+      {/* Main K-12 Portals */}
       <main className="main-content-wrapper">
         {activeTab === 'admin' && (
           <AdminPortal
@@ -132,7 +132,7 @@ export const App: React.FC = () => {
       <footer className="footer">
         <div className="footer-content">
           <span>
-            Red Rover K-12 Absence Management System • 100% Training MP4 Pixel Mirror
+            SubConnect K-12 Absence Management System • Real-Time Event-Driven Architecture
           </span>
           <span className="text-muted">
             .NET Core Web API + React 18 + Azure SignalR Hub

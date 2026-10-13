@@ -44,9 +44,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="brand-section">
           <div className="logo-badge">
             <span className="logo-dot"></span>
-            <span className="logo-text">RED ROVER</span>
+            <span className="logo-text">SUBCONNECT</span>
           </div>
-          <span className="brand-subtitle">Official UI Mirror Demo</span>
+          <span className="brand-subtitle">K-12 District Platform</span>
         </div>
 
         {/* 3 Main Persona Tabs */}
