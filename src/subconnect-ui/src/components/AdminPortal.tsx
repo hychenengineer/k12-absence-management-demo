@@ -696,9 +696,13 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                       AI Substitute Smart Dispatch Copilot
                     </span>
                     {aiData && (
-                      <span className="ai-pill-provider">
-                        <Zap size={12} style={{ color: '#d97706' }} />
-                        {aiData.providerUsed.toUpperCase()} ({aiData.latencyMs}ms)
+                      <span className="ai-pill-provider" style={{
+                        borderColor: aiData.isLiveApi ? '#10b981' : '#f59e0b',
+                        color: aiData.isLiveApi ? '#065f46' : '#92400e',
+                        background: aiData.isLiveApi ? '#ecfdf5' : '#fffbeb'
+                      }}>
+                        <Zap size={12} style={{ color: aiData.isLiveApi ? '#10b981' : '#d97706' }} />
+                        {aiData.providerUsed.toUpperCase()} • {aiData.latencyMs}ms
                       </span>
                     )}
                   </div>
@@ -723,6 +727,48 @@ export const AdminPortal: React.FC<AdminPortalProps> = ({
                     </button>
                   )}
                 </div>
+
+                {/* Clear Live Engine Execution Status Callout */}
+                {aiData && (
+                  <div style={{
+                    margin: '6px 0 10px 0',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    fontSize: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '8px',
+                    background: aiData.isLiveApi ? '#f0fdf4' : '#fffbeb',
+                    border: `1px solid ${aiData.isLiveApi ? '#bbf7d0' : '#fde68a'}`,
+                    color: aiData.isLiveApi ? '#166534' : '#92400e'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      {aiData.isLiveApi ? (
+                        <CheckCircle2 size={15} style={{ color: '#16a34a', flexShrink: 0 }} />
+                      ) : (
+                        <Sparkles size={15} style={{ color: '#d97706', flexShrink: 0 }} />
+                      )}
+                      <span>
+                        <strong>{aiData.isLiveApi ? '🚀 Live AI Active:' : '⚡ Engine Notice:'}</strong>{' '}
+                        {aiData.statusMessage || (aiData.isLiveApi 
+                          ? `Generated directly by ${aiData.providerUsed} (${aiData.modelUsed}) in ${aiData.latencyMs}ms` 
+                          : `Evaluated via built-in K-12 heuristics engine.`)}
+                      </span>
+                    </div>
+                    <span style={{ 
+                      fontSize: '11px', 
+                      fontWeight: 700, 
+                      padding: '2px 8px', 
+                      borderRadius: '12px', 
+                      background: aiData.isLiveApi ? '#dcfce7' : '#fef3c7',
+                      color: aiData.isLiveApi ? '#15803d' : '#b45309',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      Model: {aiData.modelUsed}
+                    </span>
+                  </div>
+                )}
 
                 {aiLoading ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 0', color: '#6d28d9', fontSize: '13px' }}>

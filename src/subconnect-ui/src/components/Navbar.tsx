@@ -5,11 +5,13 @@ import {
   Radio,
   Sparkles
 } from 'lucide-react';
+import { AiSettings } from '../types';
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   signalRConnected: boolean;
+  aiSettings?: AiSettings;
   onOpenAiSettings?: () => void;
 }
 
@@ -17,6 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
   signalRConnected,
+  aiSettings,
   onOpenAiSettings,
 }) => {
   const tabs = [
@@ -95,6 +98,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Sparkles size={13} style={{ color: '#d97706' }} />
               <span>AI Settings</span>
+              {aiSettings && (
+                <span style={{ 
+                  background: aiSettings.apiKey ? '#ecfdf5' : '#f1f5f9', 
+                  color: aiSettings.apiKey ? '#059669' : '#64748b', 
+                  padding: '1px 6px', 
+                  borderRadius: '10px', 
+                  fontSize: '10.5px', 
+                  fontWeight: 700,
+                  marginLeft: '2px'
+                }}>
+                  {aiSettings.provider.toUpperCase()} {aiSettings.apiKey ? '✓' : '(No Key)'}
+                </span>
+              )}
             </button>
           )}
           <div className={`status-pill ${signalRConnected ? 'live' : 'fallback'}`}>

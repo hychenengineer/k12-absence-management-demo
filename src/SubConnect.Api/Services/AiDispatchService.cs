@@ -81,7 +81,9 @@ public class AiDispatchService
                     liveResult.ModelUsed,
                     sw.ElapsedMilliseconds,
                     liveResult.Recommendations,
-                    liveResult.ExecutiveSummary
+                    liveResult.ExecutiveSummary,
+                    IsLiveApi: true,
+                    StatusMessage: $"Live API call succeeded with {provider.ToUpperInvariant()} ({liveResult.ModelUsed}) in {sw.ElapsedMilliseconds}ms"
                 );
             }
             catch (Exception ex)
@@ -102,9 +104,18 @@ public class AiDispatchService
             _ => "built-in-k12-heuristics"
         });
 
-        var providerLabel = string.IsNullOrWhiteSpace(apiKey) 
-            ? "Built-In Simulator (Zero-Config)" 
-            : $"{provider.ToUpperInvariant()} (Fallback Engine)";
+        var isOfflineExplicit = provider == "offline";
+        var providerLabel = isOfflineExplicit
+            ? "Built-In Simulator (Offline)"
+            : string.IsNullOrWhiteSpace(apiKey)
+                ? $"Built-In Simulator ({provider.ToUpperInvariant()} API Key Not Set)"
+                : $"{provider.ToUpperInvariant()} (Live API Failed - Heuristic Fallback)";
+
+        var statusMsg = isOfflineExplicit
+            ? "Using built-in deterministic K-12 heuristics engine (offline mode)"
+            : string.IsNullOrWhiteSpace(apiKey)
+                ? $"No API key entered for {provider.ToUpperInvariant()}. Generated via built-in K-12 heuristic engine."
+                : $"API call to {provider.ToUpperInvariant()} was unsuccessful. Reverted to built-in engine.";
 
         return new AiRecommendationResponse(
             absence.Id.ToString(),
@@ -114,7 +125,9 @@ public class AiDispatchService
             modelName,
             sw.ElapsedMilliseconds,
             simulated.Recommendations,
-            simulated.ExecutiveSummary
+            simulated.ExecutiveSummary,
+            IsLiveApi: false,
+            StatusMessage: statusMsg
         );
     }
 

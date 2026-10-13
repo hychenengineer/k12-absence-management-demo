@@ -120,5 +120,7 @@ export interface AiDispatchResponse {
   latencyMs: number;
   recommendations: SubRecommendation[];
   executiveSummary: string;
+  isLiveApi?: boolean;
+  statusMessage?: string;
 }
 

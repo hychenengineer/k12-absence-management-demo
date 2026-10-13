@@ -115,6 +115,7 @@ export const App: React.FC = () => {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         signalRConnected={signalRConnected}
+        aiSettings={aiSettings}
         onOpenAiSettings={() => setIsAiSettingsOpen(true)}
       />
 

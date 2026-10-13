@@ -80,6 +80,8 @@ public record AiRecommendationResponse(
     string ModelUsed,
     long LatencyMs,
     List<SubRecommendationDto> Recommendations,
-    string ExecutiveSummary
+    string ExecutiveSummary,
+    bool IsLiveApi = false,
+    string? StatusMessage = null
 );
 
